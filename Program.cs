@@ -23,19 +23,12 @@ namespace HelloWorld
 
             DateTime test0Start = DateTime.UtcNow;
             IEnumerable<int> test0 = numbersIEnumerable.Where(n => n % 2 == 0);
-
-            for (int i = 0; i < NUM_TEST; i++)
-                test0 = numbersIEnumerable.Where(n => n % 2 == 0);
-
             DateTime test0End = DateTime.UtcNow;
             Console.WriteLine($"IEnumerable.Where(): {(test0End - test0Start)} (Count:  {test0.Count()})");
 
 
             DateTime test1Start = DateTime.UtcNow;
             IEnumerable<int> test1 = numbers.Where(n => n % 2 == 0);
-            for (int i = 0; i < NUM_TEST; i++)
-                test1 = numbers.Where(n => n % 2 == 0);
-
             DateTime test1End = DateTime.UtcNow;
             Console.WriteLine($"List.Where(): {(test1End - test1Start)} (Count: {test1.Count()})");
 
@@ -45,12 +38,8 @@ namespace HelloWorld
 
             DateTime test2Start = DateTime.UtcNow;
             List<int> test2 = numbers.Where(n => n % 2 == 0).ToList();
-            for (int i = 0; i < NUM_TEST; i++)
-                test2 = numbers.Where(n => n % 2 == 0).ToList();
-
             DateTime test2End = DateTime.UtcNow;
             Console.WriteLine($"List.Where().ToList(): {(test2End - test2Start)} (Count: {test2.Count})");
-
 
 
             DateTime test3Start = DateTime.UtcNow;
@@ -60,24 +49,20 @@ namespace HelloWorld
 
 
 
-            Console.WriteLine("\n===With IEnumerable but want a List as result===");
+            Console.WriteLine("\n===With IEnumerable but want a List as result (test 1,000 times)===");
 
             List<int> newList = new List<int>();
             DateTime test4Start = DateTime.UtcNow;
             for (int i = 0; i < NUM_TEST; i++)
-            {
-                newList = numbersIEnumerable.ToList();
-                newList.RemoveAll(n => n % 2 > 0);
-            }
+                numbersIEnumerable.ToList().RemoveAll(n => n % 2 > 0);            
             DateTime test4End = DateTime.UtcNow;
             Console.WriteLine($"IEnumerable.ToList().RemoveAll(): {(test4End - test4Start)} (Count: {newList.Count()})");
 
-            
+
             List<int> newList1 = new List<int>();
             DateTime test5Start = DateTime.UtcNow;
             for (int i = 0; i < NUM_TEST; i++)
                 newList1 = numbersIEnumerable.Where(n => n % 2 == 0).ToList();
-
             DateTime test5End = DateTime.UtcNow;
             Console.WriteLine($"IEnumerable.Where().ToList(): {(test5End - test5Start)} (Count: {newList1.Count})");
 
