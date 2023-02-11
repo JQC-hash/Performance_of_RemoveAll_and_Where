@@ -19,18 +19,22 @@ namespace HelloWorld
             IEnumerable<int> numbersIEnumerable = numbers.Where(n => true);
 
 
-            Console.WriteLine("===IEnumerable Result===");
+                        Console.WriteLine("===Iterate through IEnumerable vs List===");
 
-            DateTime test0Start = DateTime.UtcNow;
             IEnumerable<int> test0 = numbersIEnumerable.Where(n => n % 2 == 0);
+            DateTime test0Start = DateTime.UtcNow;
+            foreach (int t in test0)
+                continue;
             DateTime test0End = DateTime.UtcNow;
-            Console.WriteLine($"IEnumerable.Where(): {(test0End - test0Start)} (Count:  {test0.Count()})");
+            Console.WriteLine($"Iteration on IEnumerable: {(test0End - test0Start)} (Count:  {test0.Count()})");
 
 
+            List<int> test1 = numbers.Where(n => n % 2 == 0).ToList();
             DateTime test1Start = DateTime.UtcNow;
-            IEnumerable<int> test1 = numbers.Where(n => n % 2 == 0);
+            foreach (int t in test1)
+                continue;
             DateTime test1End = DateTime.UtcNow;
-            Console.WriteLine($"List.Where(): {(test1End - test1Start)} (Count: {test1.Count()})");
+            Console.WriteLine($"Iteration on List: {(test1End - test1Start)} (Count: {test1.Count()})");
 
 
 
