@@ -14,9 +14,7 @@ namespace HelloWorld
             List<int> numbers = new List<int>();
 
             for (int i = 0; i < 1000000; i++)
-            {
                 numbers.Add(rnd.Next(0, 100000000));
-            }
 
             IEnumerable<int> numbersIEnumerable = numbers.Where(n => true);
 
@@ -31,8 +29,6 @@ namespace HelloWorld
 
             DateTime test0End = DateTime.UtcNow;
             Console.WriteLine($"IEnumerable.Where(): {(test0End - test0Start)} (Count:  {test0.Count()})");
-
-
 
 
             DateTime test1Start = DateTime.UtcNow;
@@ -76,6 +72,7 @@ namespace HelloWorld
             DateTime test4End = DateTime.UtcNow;
             Console.WriteLine($"IEnumerable.ToList().RemoveAll(): {(test4End - test4Start)} (Count: {newList.Count()})");
 
+            
             List<int> newList1 = new List<int>();
             DateTime test5Start = DateTime.UtcNow;
             for (int i = 0; i < NUM_TEST; i++)
